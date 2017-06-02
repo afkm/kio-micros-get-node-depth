@@ -1,5 +1,5 @@
 {
-  "name": "listener-get-node-depth",
+  "name": "get-node-depth",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
