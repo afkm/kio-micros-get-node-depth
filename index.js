@@ -56,7 +56,11 @@ var listener = require('seneca')()
 
           // Set start node modifier
           if (record.get('childNode').labels.includes('Modifier')) {
-            fragmentModifier.push(record.get('childNode').properties.name);
+            if (record.get('childNode').properties.title != null) {
+                fragmentModifier.push(record.get('childNode').properties.title);
+            } else {
+                fragmentModifier.push(record.get('childNode').properties.name);
+            }
             return callback();
           }
 
