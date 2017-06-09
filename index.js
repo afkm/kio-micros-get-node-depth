@@ -35,7 +35,7 @@ var listener = require('seneca')()
         var isPublication = false;
 
         // get node plus all (bi-directional) related nodes, except 'parent' nodes
-        var queryString = "MATCH (startNode {cuid:'" + message.cuid + "'}) -[relation]- (childNode) WHERE NOT (startNode)<-[:USES]-(childNode) RETURN startNode, childNode, relation ORDER BY relation.nodeOrder";
+        var queryString = "MATCH (startNode {cuid:'" + message.cuid + "'}) -[relation]- (childNode) WHERE NOT (startNode)<-[:USES]-(childNode) AND NOT (startNode)-[:BLUEPRINT_INSTANCE]->(childNode) RETURN startNode, childNode, relation ORDER BY relation.nodeOrder";
 
         session
             .run(queryString)
